@@ -5,6 +5,7 @@ mis = int(input("Mis: "))
 match = int(input("Match: "))
 gap = int(input("Gap: "))
 
+# Inicializando a lista de scores
 score_list = []
 for i in range(len(seq1)+1):
   row = []
@@ -18,6 +19,10 @@ for i in range(len(seq1)+1):
     row.append(0)
 
   score_list.append(row)
+
+print()
+print('-'*35)
+print('Sequencia de scores: Vertical, horizontal e diagonal de cada celula')
 
 backtrack = []
 for i_idx, i in enumerate(seq1):
@@ -35,6 +40,7 @@ for i_idx, i in enumerate(seq1):
 
     hor_gap_score = score_list[i_idx+1][j_idx] + gap
     print("i =", i_idx, "j =", j_idx, "gap_score =", hor_gap_score)
+    print()
 
     max_score = max([diag_score, vert_gap_score, hor_gap_score])
 
@@ -47,7 +53,7 @@ for i_idx, i in enumerate(seq1):
 
     score_list[i_idx+1][j_idx+1] = max_score
   backtrack.append(backtrack_row)
-print()
+  
 print('-'*35)
 print('SCORES: ')
 
@@ -78,14 +84,12 @@ while(True):
 
   if aux1[0] < 0:
     for i in range(aux1[1], -1, -1):
-      print(i)
       seqCorrigida1 += '-'
       seqCorrigida2 += seq2[i]
     break      
 
   if aux1[1] < 0:
     for i in range(aux1[0], -1, -1):
-      print(i)
       seqCorrigida1 += seq1[i]
       seqCorrigida2 += '-'
     break
@@ -117,14 +121,12 @@ while(True):
 
   if aux1[0] < 0:
     for i in range(aux1[1], -1, -1):
-      print(i)
       seqCorrigida1 += '-'
       seqCorrigida2 += seq2[i]
     break      
 
   if aux1[1] < 0:
     for i in range(aux1[0], -1, -1):
-      print(i)
       seqCorrigida1 += seq1[i]
       seqCorrigida2 += '-'
     break
@@ -145,6 +147,3 @@ while(True):
 print('-'*35)
 print("Sequencia do score máximo 1 gerada:", seqCorrigida1[len(seqCorrigida1)::-1])
 print("Sequencia do score máximo 2 gerada:", seqCorrigida2[len(seqCorrigida1)::-1])
-
-# print(backtrack)
-# print(score_list)
